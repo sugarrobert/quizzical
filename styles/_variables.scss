@@ -1,0 +1,26 @@
+    $grey: hsl(0, 0%, 22%); /* #393939; */
+    $orange: hsl(11, 60%, 61%); /* D87761 */
+    $blue: hsl(219, 64%, 42%); /* info #2757b1; */
+    $green: hsl(163, 100%, 33%); /* success #00a97a; */
+    $ocher: hsl(47, 66%, 51%); /* notice #d5b130; */
+    $red: hsl(0, 100%, 63%); /* error #ff4141; */
+
+    $white: #fff;
+    $black: #000;
+    $grey-10: hsl(0, 0%, 7%);
+    $grey-30: hsl(0, 0%, 22%); 
+    $grey-50: hsl(0, 0%, 37%);
+    $grey-70: hsl(0, 0%, 52%);
+    $grey-90: hsl(0, 0%, 77%);
+
+    $color__text: #000;
+    $font-stack__base: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    $font-weight__normal: 400;
+    $font-weight__medium: 500;
+    $font-weight__bold: 700;
+
+    /** Containers **/
+
+    $container__initial: 360px;
+    $container--max-width: 550px;
+    $gutter: 20px;

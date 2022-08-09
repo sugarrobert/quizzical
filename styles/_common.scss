@@ -1,0 +1,34 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $font-stack__base;
+    margin: 0;
+    padding: 0;
+    color: $color__text;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    @include container;
+}
+
+.no-display {
+    @include no-display;
+}
+
+.no-scroll {
+    overflow-y: hidden;
+    height: 100%;
+}
