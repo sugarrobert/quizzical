@@ -1,0 +1,45 @@
+.action {
+    font: inherit;
+    padding: 0;
+    cursor: pointer;
+    color: inherit;
+    border: none;
+    background-color: transparent;
+
+    &.primary {
+        padding: toRem(16) toRem(28);
+        font-size: toRem(16);
+        line-height: toRem(19);
+        color: $white;
+        background-color: $theme-color__primary-10;
+        border-radius: 15px;
+    }
+
+    &.answer {
+        padding: toRem(4) toRem(16);
+        font-size: toRem(10);
+        line-height: toRem(12);
+        color: $color__text;
+        border: 1px solid $theme-color__primary;
+        border-radius: 8px;
+        opacity: .5;
+
+        &.selected {
+            background-color: $theme-color__primary-20;
+            border-color: $theme-color__primary-20;
+        }
+
+        &.correct {
+            background-color: $theme-color__green;
+            border-color: $theme-color__green;
+            opacity: 1;
+        }
+
+        &.incorrect {
+            background-color: $theme-color__red;
+            border-color: $theme-color__red;
+            color: $color__text-muted;
+        }
+    }
+}
+

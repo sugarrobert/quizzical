@@ -1,0 +1,89 @@
+body {
+    background-color: $theme-background-color__secondary;
+}
+
+.root {
+    @include flex (column, center, center, nowrap);
+    height: 100vh;
+}
+
+.main__content {
+    @include container;
+    @include flex (column, center, center, nowrap);
+    overflow: hidden;
+    position: relative;
+    height: 100vh;
+    max-height: toRem(550);
+    text-align: center;
+    background-color: $theme-background-color__primary;
+
+    &::before,
+    &::after {
+        position: absolute;
+        content: "";
+        width: toRem(297);
+        height: toRem(235);
+        border-radius: 75% 40% 25% 40%/68% 83% 32% 40%;
+        transform: rotate(13deg);
+    }
+
+    &::after {
+        background-color: $theme-background-color__lemony;
+        top: toRem(-130);
+        right: toRem(-160);
+    }
+
+    &::before {
+        background-color: $theme-background-color__baby;
+        bottom: toRem(-130);
+        left: toRem(-160);
+    }
+}
+
+.new-game {
+    position: relative;
+    z-index: 1;
+}
+
+.quizzical__title {
+    font-size: toRem(32);
+    line-height: toRem(37);
+    margin-bottom: toRem(10);
+    color: $color__text;
+}
+
+.quizzical__description {
+    font-size: toRem(16);
+    line-height: toRem(19);
+    margin-bottom: toRem(28);
+    color: $color__text;
+}
+
+.question__wrapper {
+    width: 100%;
+}
+
+.question__container {
+    @include flex(column, flex-start, center, nowrap);
+    width: 100%;
+}
+
+.answers__container {
+    @include flex(row, flex-start, center, nowrap);
+    margin-bottom: toRem(15);
+    text-align: left;
+}
+
+.quizzical__question-item {
+    list-style: none;
+
+    &:not(:last-child) {
+        margin-right: toRem(12);
+    }
+}
+
+.quizzical__question {
+    margin-bottom: toRem(12);
+    color: $color__text;
+    text-align: start;
+}

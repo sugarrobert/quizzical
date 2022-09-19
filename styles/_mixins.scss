@@ -182,3 +182,9 @@
     text-align: left;
     color: $color__text;
 }
+
+
+@function toRem($value) {
+    $remValue: calc($value / $base-font-size) + rem; 
+    @return $remValue;
+}

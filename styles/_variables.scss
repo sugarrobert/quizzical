@@ -13,7 +13,21 @@
     $grey-70: hsl(0, 0%, 52%);
     $grey-90: hsl(0, 0%, 77%);
 
-    $color__text: #000;
+    $theme-color__primary: hsla(231, 42%, 28%, 1);/* #293264 */
+    $theme-color__primary-10: hsla(230, 34%, 46%, 1);/* #4D5B9E */
+    $theme-color__primary-20: hsla(230, 61%, 90%, 1);/* #D6DBF5 */
+
+    $theme-color__green: hsla(133, 46%, 71%, 1);/* #94D7A2 */
+    $theme-color__red: hsla(360, 81%, 85%, 1);/* #F8BCBC */
+    $theme-color__blue: hsla(231, 42%, 28%, 1); /* #293264 */
+
+    $theme-background-color__primary: hsla(220, 43%, 97%, 1);/* #F5F7FB */
+    $theme-background-color__secondary: hsla(0, 0%, 11%, 1);/* #1C1C1C */
+    $theme-background-color__baby: hsla(210, 65%, 92%, 1);/* #FFFAD1 */
+    $theme-background-color__lemony: hsla(54, 100%, 91%, 1);/* #DEEBF8 */
+
+    $color__text: $theme-color__primary;
+    $color__text-muted: $theme-color__blue;
     $font-stack__base: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     $font-weight__normal: 400;
     $font-weight__medium: 500;
@@ -24,3 +38,4 @@
     $container__initial: 360px;
     $container--max-width: 550px;
     $gutter: 20px;
+    $base-font-size: 16;
