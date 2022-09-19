@@ -2,6 +2,7 @@ import { React, useState, useEffect } from "react";
 import Question from "./Question"
 import shuffle from "../common/utils/shuffle";
 import {nanoid} from "nanoid";
+import he from "he";
 
 function Questions() {
     const [triviaItemsData, setTriviaItemsData] = useState([]);
@@ -24,11 +25,11 @@ function Questions() {
 
             const objAll = {
                 id: id,
-                question: question,
+                question: he.decode(question),
                 answers: shuffledAnswers.map(item => {
                     return {
                         id: id,
-                        value: item,
+                        value: he.decode(item),
                         isCorrect: item === correct_answer ? true : false,
                         isSelected: false,
                         isCorrectAnswer: null,
