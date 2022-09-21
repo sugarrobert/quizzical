@@ -12,8 +12,7 @@ body {
     @include flex (column, center, center, nowrap);
     overflow: hidden;
     position: relative;
-    height: 100vh;
-    max-height: toRem(550);
+    min-height: toRem(550);
     text-align: center;
     background-color: $theme-background-color__primary;
 
@@ -40,11 +39,6 @@ body {
     }
 }
 
-.new-game {
-    position: relative;
-    z-index: 1;
-}
-
 .quizzical__title {
     font-size: toRem(32);
     line-height: toRem(37);
@@ -57,6 +51,17 @@ body {
     line-height: toRem(19);
     margin-bottom: toRem(28);
     color: $color__text;
+}
+
+.quizzical__game__wrapper {
+    margin-top: toRem(35);
+    margin-bottom: toRem(35);
+    position: relative;
+    z-index: 1;
+}
+
+.quizzical__questions__wrapper {
+    margin-bottom: toRem(35);
 }
 
 .question__wrapper {
@@ -86,4 +91,11 @@ body {
     margin-bottom: toRem(12);
     color: $color__text;
     text-align: start;
+}
+
+.quizzical__score {
+    font-size: toRem(12);
+    line-height: toRem(15);
+    margin-right: toRem(15);
+    font-weight: 700;
 }

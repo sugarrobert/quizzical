@@ -1,5 +1,7 @@
 import { React, useState, useEffect } from "react";
-import Question from "./Question"
+import Question from "./Question";
+import StartScreen from "./StartScreen";
+import StartGameBtn from "./StartGameBtn";
 import shuffle from "../common/utils/shuffle";
 import {nanoid} from "nanoid";
 import he from "he";
@@ -7,6 +9,10 @@ import he from "he";
 function Questions() {
     const [triviaItemsData, setTriviaItemsData] = useState([]);
     const [triviaItem, setTriviaItem] = useState([]);
+    const [gameState, setGameState] = useState({
+        score: 0,
+        state: "start" 
+    });
 
     useEffect(() => {
         fetch("https://opentdb.com/api.php?amount=5&type=multiple")
@@ -14,8 +20,18 @@ function Questions() {
             .then(data => setTriviaItemsData(data.results))
     }, [])
 
-    
-    useEffect(() => {
+    const { score, state } = gameState;
+    let pageContent;
+
+    const restartGame = () => {
+        setGameState({
+            score: 0,
+            state: "newGame"
+        });
+        getNewQuestions();
+    };
+
+    const getNewQuestions = () => {
         setTriviaItem([]);
         triviaItemsData.map((item) => {
             const { question, correct_answer, incorrect_answers } = item;
@@ -43,8 +59,10 @@ function Questions() {
                 ...prevTriviaItem,
                 objAll
             ]))
-        })
-    }, [triviaItemsData])
+        });
+
+        setGameState({ ...gameState, state: "newGame"});
+    } 
 
     const selectAnswers = (e) => {
         e.preventDefault();
@@ -70,12 +88,17 @@ function Questions() {
 
     const checkAnswers = (e) => {
         const selected = document.querySelectorAll(".selected");
+        let newScore = 0;
 
         if (selected.length >= 5) {
             const setCorrectAnswers = triviaItem.map(trivia => {
                 trivia.answers.map(answer => {
                     if (answer.isCorrect === true) {
                         answer.isCorrectAnswer = true;
+                    } 
+                    
+                    if (answer.isCorrect === true && answer.isSelected === true) {
+                        newScore ++;
                     } 
                     
                     if (answer.isSelected === true && answer.isCorrect === false) {
@@ -91,6 +114,7 @@ function Questions() {
             })
             
             setTriviaItem(setCorrectAnswers);
+            setGameState({ state: "restart", score: newScore});
         } else {
             alert("Check all answers");
             return
@@ -108,14 +132,36 @@ function Questions() {
         )
     )
 
+    if (state === "start") {
+        pageContent = <StartScreen onPlayClick={getNewQuestions} />;
+    } else if (state === "newGame") {
+        pageContent = (
+            <div className="quizzical__game__wrapper">
+                <div className="quizzical__questions__wrapper">
+                    {setAllTriviaItems}
+                </div>
+                <button className="action primary"
+                    onClick={checkAnswers}>
+                        Check answers
+                </button>
+            </div>
+        );
+    } else {
+        pageContent = (
+            <div className="quizzical__game__wrapper">
+                <div className="quizzical__questions__wrapper">
+                    {setAllTriviaItems}
+                </div>
+                <span className="quizzical__score">You scored {score}/5 correct answers</span>
+                <StartGameBtn btnText="Play again" onPlayClick={restartGame} />
+            </div>
+        );
+    }
+    
     return (
-        <div className="new-game">
-            {setAllTriviaItems}
-            <button className="action primary"
-            onClick={checkAnswers}>
-                    Check answers
-            </button>
-        </div>
+        <>
+            {pageContent}
+        </>
     );
 }
 
