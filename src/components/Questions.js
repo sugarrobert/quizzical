@@ -15,13 +15,17 @@ function Questions() {
     });
 
     useEffect(() => {
-        fetch("https://opentdb.com/api.php?amount=5&type=multiple")
-            .then(res => res.json())
-            .then(data => setTriviaItemsData(data.results))
+        getNewData();
     }, [])
 
     const { score, state } = gameState;
     let pageContent;
+
+    const getNewData = () => {
+        fetch("https://opentdb.com/api.php?amount=5&type=multiple")
+            .then(res => res.json())
+            .then(data => setTriviaItemsData(data.results));
+    };
 
     const restartGame = () => {
         setGameState({
@@ -115,6 +119,7 @@ function Questions() {
             
             setTriviaItem(setCorrectAnswers);
             setGameState({ state: "restart", score: newScore});
+            getNewData();
         } else {
             alert("Check all answers");
             return
